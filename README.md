@@ -2,7 +2,7 @@
 
 
 
-
+##
 ## Introduction
 
 This project implements a system to detect and monitor the loading conditions of railway wagons using IoT technology. The system uses load sensors interfaced with an ESP8266 microcontroller to measure and transmit weight data in real-time to an Adafruit IO dashboard. The system also includes a local LCD display for instant weight readings.
