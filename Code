@@ -5,93 +5,22 @@
 #include "Adafruit_MQTT.h"
 #include "Adafruit_MQTT_Client.h"
 
-#define WLAN_SSID       "PROJECT"
-#define WLAN_PASS       "123456789"
 
-#define AIO_SERVER      "io.adafruit.com"
-#define AIO_SERVERPORT  1883                   // use 8883 for SSL
-#define AIO_USERNAME    "Ruthikasri0604"
-#define AIO_KEY         "aio_CRbo378Txu4hCPvDcYFlXLJ4eWWU"
+##
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+##
 
-WiFiClient client;
-Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);
-Adafruit_MQTT_Publish photocell = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/a");
-Adafruit_MQTT_Subscribe onoffbutton = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/onoff");
-void MQTT_connect();
-LiquidCrystal_I2C lcd(0x27,16,2);
-#define LOADCELL_DOUT_PIN  D6
-#define LOADCELL_SCK_PIN  D5
-
-HX711 scale;
-
-float calibration_factor = -7050; //-7050 worked for my 440lb max scale setup
-
-void setup() {
-  Serial.begin(115200);
-  Serial.println(); Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(WLAN_SSID);
-
-  WiFi.begin(WLAN_SSID, WLAN_PASS);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println();
-
-  Serial.println("WiFi connected");
-  Serial.println("IP address: "); Serial.println(WiFi.localIP());
-  Serial.println("HX711 calibration sketch");
-  Serial.println("Remove all weight from scale");
-  Serial.println("After readings begin, place known weight on scale");
-  Serial.println("Press + or a to increase calibration factor");
-  Serial.println("Press - or z to decrease calibration factor");
-  
-  lcd.init();
-  lcd.backlight();
-  scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
-  scale.set_scale();
-  scale.tare(); //Reset the scale to 0
-  
-  long zero_factor = scale.read_average(); //Get a baseline reading
-  Serial.print("Zero factor: "); //This can be used to remove the need to tare the scale. Useful in permanent scale projects.
-  Serial.println(zero_factor);
-}
-
-void loop() {
-  MQTT_connect();
-  scale.set_scale(calibration_factor); //Adjust to this calibration factor
-  Serial.print("Reading: ");
-  Serial.print(scale.get_units(), 1);
-  Serial.print(" lbs"); //Change this to kg and re-adjust the calibration factor if you follow SI units like a sane person
-  Serial.print(" calibration_factor: ");
-  Serial.print(calibration_factor);
-  Serial.println();
-  lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print("WEIGHT IN lbs");
-  lcd.setCursor(0,1);
-  lcd.print(scale.get_units(), 1);
-  photocell.publish(scale.get_units(), 1);
-  delay(2000);
-//  if(Serial.available())
-//  {
-//    char temp = Serial.read();
-//    if(temp == '+' || temp == 'a')
-//      calibration_factor += 10;
-//    else if(temp == '-' || temp == 'z')
-//      calibration_factor -= 10;
-//  }
-}
-
-
-void MQTT_connect() {
-  int8_t ret;
-
-  // Stop if already connected.
-  if (mqtt.connected()) {
-    return;
-  }
 
   Serial.print("Connecting to MQTT... ");
 
