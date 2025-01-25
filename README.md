@@ -1,8 +1,5 @@
 # Detecting-the-Under-loading-and-Over-loading-of-Railway-Wagons-using-IOT
 
-Here’s a README tailored to your code:
-
----
 
 ## Introduction
 
