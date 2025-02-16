@@ -65,6 +65,9 @@ This project implements a system to detect and monitor the loading conditions of
 4. **Monitor Data**:
    - View weight readings locally on the LCD.
    - Log in to Adafruit IO to monitor data remotely.
+  
+## Output
+![image](https://github.com/user-attachments/assets/7a4b329d-74f1-4a65-91d2-fbfbd1dea3aa)
 
 ## Usage
 
