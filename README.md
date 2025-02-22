@@ -1,89 +1,79 @@
-# Detecting-the-Under-loading-and-Over-loading-of-Railway-Wagons-using-IOT
 
+**##AUTOMATIC RAIN PROTECTION SYSTEM FOR CLOTHES DRYING RACKS**
 
+**Team Name:** WRECKERS  
+**Team Members:**  
+- S.R. MAHALAKSHMI  
+- M.R. SHREEJA  
+- SHAUN ROBERTSON  
+- RUTHIKA SRI C M  
 
+**1. Introduction:**  
+Drying clothes outdoors is a common practice, but unpredictable rainfall can lead to extended drying times, unpleasant odors, and hygiene concerns. Manually moving clothes indoors during rain is inconvenient, especially in urban areas with limited space. This project aims to provide an automated solution to protect clothes from rain while ensuring efficient drying.
 
-## Introduction
+**2. Objective:**  
+To design a motorized system with a water-resistant bellow cover that automatically extends over drying racks upon detecting rain, offering protection and convenience.
 
-This project implements a system to detect and monitor the loading conditions of railway wagons using IoT technology. The system uses load sensors interfaced with an ESP8266 microcontroller to measure and transmit weight data in real-time to an Adafruit IO dashboard. The system also includes a local LCD display for instant weight readings.
+**3. Problem Statement:**  
+Outdoor drying is widely practiced but faces challenges due to sudden rainfall, leading to:
+- Extended drying times and unpleasant odors
+- Increased manual effort to move clothes
+- Bacterial growth due to moisture retention
+- Dependence on electric dryers, increasing energy costs  
+A smart, automated rain protection system is essential to address these issues efficiently.
 
-## Features
+**4. Scope of the Problem:**  
+- Outdoor drying is common in urban and rural homes.
+- Unattended wet clothes can lead to health hazards.
+- High energy consumption of electric dryers impacts costs and the environment.
+- Unpredictable rain disrupts daily routines.
 
-- **Real-Time Weight Monitoring**: Measures the weight of the load on the wagon using an HX711 load cell module.
-- **IoT Integration**: Sends weight data to the Adafruit IO platform for remote monitoring.
-- **Local Display**: Displays the measured weight on a 16x2 I2C LCD screen.
-- **Calibration**: Adjustable calibration factor for precise weight measurements.
-- **MQTT Communication**: Uses MQTT protocol to publish data to the cloud.
+**5. Financial Details:**  
+| Components      | Quantity | Price (INR) |
+|---------------|---------|------------|
+| Iron Rod      | 2 (5ft) | 2000       |
+| ESP 32       | 1       | 400        |
+| Motor Driver  | 1       | 200        |
+| DHT11         | 1       | 70         |
+| Stepper Motor | 1       | 500        |
+| Rain Sensor   | 1       | 100        |
+| Wires         | 1       | 200        |
+| Bellow Cover  | 1       | 300        |
+**Total Estimated Cost:** ₹3000 - ₹3500
 
-## System Components
+**6. Flow of Operations:**  
+1. **System Initialization** - Components check and readiness.
+2. **Rain Detection** - Sensor continuously monitors precipitation.
+3. **Cover Deployment** - Motor extends the bellow cover when rain is detected.
+4. **Cover Retraction** - System retracts cover when rain stops.
+5. **Monitoring State** - System resets for next cycle.
 
-### Hardware
-- **ESP8266**: Microcontroller for data processing and communication.
-- **HX711 Load Cell Module**: For weight measurement.
-- **16x2 I2C LCD**: For local weight display.
-- **Wi-Fi Module**: Built into the ESP8266 for IoT connectivity.
+**7. Comparison with Existing Products:**  
+| Feature              | Existing Products | Proposed Project |
+|----------------------|------------------|------------------|
+| Rain Protection     | Limited          | Full coverage   |
+| Automation         | Semi-automated   | Fully automated  |
+| Energy Consumption | High             | Low             |
+| Cost               | ₹15,000+         | ₹3,500 approx.  |
+| Space Utilization  | Bulky            | Compact         |
 
-### Software
-- **Arduino IDE**: For programming the ESP8266.
-- **Adafruit IO**: Cloud platform for data visualization and storage.
-- **MQTT Protocol**: For efficient data transmission.
+**8. Uniqueness & Advantages:**  
+- **Automated Rain Detection:** No manual intervention required.
+- **Motorized Deployment & Retraction:** Quick response within 5-10 seconds.
+- **Compact & Space Efficient:** Integrates seamlessly with existing racks.
+- **Weather-Resistant & Durable:** UV and rain-resistant bellow cover.
+- **Energy-Efficient:** Low power consumption (<20 watts during operation).
 
-## Prerequisites
+**9. Future Integrations:**  
+- **Smart Home Connectivity:** Integration with IoT platforms for remote monitoring.
+- **Solar-Powered System:** To enhance energy efficiency.
+- **Weather Forecast Integration:** Predictive operation based on real-time forecasts.
+- **Adjustable Bellow Cover:** Customizable for different rack sizes.
 
-- **Arduino IDE**: Install from [Arduino](https://www.arduino.cc/en/software).
-- **Adafruit IO Account**: Create an account on [Adafruit IO](https://io.adafruit.com).
-- **Libraries**: Install the following libraries via the Arduino Library Manager:
-  - `HX711`
-  - `LiquidCrystal_I2C`
-  - `ESP8266WiFi`
-  - `Adafruit_MQTT`
+**10. Prototype:**  
+Prototype development and testing have demonstrated successful deployment, durability, and efficiency.  
+[Prototype Link](https://drive.google.com/file/d/1fqypYZ0EEewzw_ew_TRqU84IeyJ62mjE/view?usp=drivesdk)
 
-## Installation and Setup
-
-1. **Hardware Connections**:
-   - Connect the HX711 load cell module to the ESP8266 as follows:
-     - DOUT → D6
-     - SCK → D5
-   - Connect the 16x2 I2C LCD to the ESP8266 using the appropriate SDA and SCL pins.
-   - Power the system using a 5V power supply.
-
-2. **Software Configuration**:
-   - Open the code in the Arduino IDE.
-   - Update the following fields with your credentials:
-     ```cpp
-     #define WLAN_SSID       "Your Wi-Fi SSID"
-     #define WLAN_PASS       "Your Wi-Fi Password"
-     #define AIO_USERNAME    "Your Adafruit IO Username"
-     #define AIO_KEY         "Your Adafruit IO Key"
-     ```
-   - Adjust the `calibration_factor` to match your load cell setup.
-
-3. **Upload the Code**:
-   - Select the appropriate board and port in the Arduino IDE.
-   - Upload the code to the ESP8266.
-
-4. **Monitor Data**:
-   - View weight readings locally on the LCD.
-   - Log in to Adafruit IO to monitor data remotely.
-  
-## Output
-![image](https://github.com/user-attachments/assets/7a4b329d-74f1-4a65-91d2-fbfbd1dea3aa)
-
-## Usage
-
-- The system continuously measures the load and displays the weight on the LCD.
-- Weight data is published to the Adafruit IO dashboard every 2 seconds.
-- Adjust the calibration factor in the code for precise measurements.
-
-## Troubleshooting
-
-- **No Wi-Fi Connection**: Ensure the SSID and password are correct.
-- **Incorrect Weight**: Recalibrate the system using the calibration factor.
-- **No Data on Adafruit IO**: Check MQTT connection status in the serial monitor.
-
-## Future Enhancements
-
-- Integrate additional sensors (e.g., temperature, vibration) for comprehensive monitoring.
-- Implement predictive maintenance using AI/ML algorithms.
-- Expand to support multiple wagons with centralized monitoring.
+**11. Conclusion:**  
+The Automatic Rain Protection System enhances outdoor drying by providing reliable, automated protection against rain. It eliminates manual effort, reduces reliance on electric dryers, and promotes sustainable drying practices. With potential IoT and solar integrations, the system offers an efficient, future-ready solution for modern households.
 
